@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-app-swd-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8s-app-swd-deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-app-swd-deployment
+    spec:
+      containers:
+      - name: k8s-app-swd-deployment
+        image: k8s-app-swd:v1
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+          protocol: TCP
