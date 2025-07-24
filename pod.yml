@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-app-swd-pod
+  # labels:
+  #   app.kubernetes.io/name: myapp
+spec:
+  containers:
+  - name: demo-container-k8s-app-swd
+    image: k8s-app-swd:v1
+    imagePullPolicy: IfNotPresent
+    # resources:
+    #   limits:
+    #     memory: "128Mi"
+    #     cpu: "500m"
+    ports:
+      - containerPort: 5000
+        protocol: TCP
